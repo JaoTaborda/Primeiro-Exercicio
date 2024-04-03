@@ -1,0 +1,27 @@
+public class Livro {
+    private String titulo;
+    private String autor;
+    private int ano;
+
+    public Livro(int ano, String autor, String titulo) {
+        this.ano = ano;
+        this.autor = autor;
+        this.titulo = titulo;
+    }
+
+    public void exibirInfo() {
+        System.out.println("Ano: " + ano);
+        System.out.println("Autor: " + autor);
+        System.out.println("Título: " + titulo);
+    }
+
+    public static void main(String[] args) {
+        Livro livro1 = new Livro(1605, "Miguel de Cervantes", "Dom Quixote");
+        livro1.exibirInfo();
+
+        System.out.println();
+
+        Livro livro2 = new Livro(1954, "J.R.R. Tolkien", "O Senhor dos Anéis");
+        livro2.exibirInfo();
+    }
+}
