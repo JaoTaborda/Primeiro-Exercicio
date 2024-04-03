@@ -1,0 +1,70 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Pedido {
+    private List<Pizza> pizzas;
+    private String enderecoEntrega;
+    private double valorTotal;
+
+    public Pedido() {
+        this.pizzas = new ArrayList<>();
+        this.enderecoEntrega = "";
+        this.valorTotal = 0.0;
+    }
+    public void adicionarPizza(Pizza pizza) {
+        pizzas.add(pizza);
+        valorTotal += pizza.getValor();
+    }
+public void cancelarPedido() {
+        pizzas.clear();
+        valorTotal = 0.0;
+    }
+    public void setEnderecoEntrega(String enderecoEntrega) {
+        this.enderecoEntrega = enderecoEntrega;
+    }
+    public double getValorTotal() {
+        return valorTotal;
+    }
+    public void exibirPedido() {
+        System.out.println("Endereço de entrega: " + enderecoEntrega);
+        System.out.println("Pizzas no pedido:");
+        for (Pizza pizza : pizzas) {
+            System.out.println("- " + pizza.getNome() + " - R$" + pizza.getValor());
+        }
+        System.out.println("Valor total: R$" + valorTotal);
+    }
+    public static void main(String[] args) {
+        Pizza pizzaCalabresa = new Pizza("Calabresa", 30.0, "Calabresa, mussarela, cebola");
+        Pizza pizzaMarguerita = new Pizza("Marguerita", 35.0, "Molho de tomate, mussarela, tomate, manjericão");
+        Pizza pizzaFrangoCatupiry = new Pizza("Frango com Catupiry", 32.0, "Frango, catupiry, milho");
+
+        Pedido pedido = new Pedido();
+        pedido.setEnderecoEntrega("Rua das Pizzas, 123");
+
+        pedido.adicionarPizza(pizzaCalabresa);
+        pedido.adicionarPizza(pizzaMarguerita);
+        pedido.adicionarPizza(pizzaFrangoCatupiry);
+
+        pedido.exibirPedido();
+    }
+}
+class Pizza {
+    private String nome;
+    private double valor;
+    private String ingredientes;
+
+    public Pizza(String nome, double valor, String ingredientes) {
+        this.nome = nome;
+        this.valor = valor;
+        this.ingredientes = ingredientes;
+    }
+    public String getNome() {
+        return nome;
+    }
+    public double getValor() {
+        return valor;
+    }
+    public String getIngredientes() {
+        return ingredientes;
+    }
+}
